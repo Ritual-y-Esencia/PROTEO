@@ -25,7 +25,7 @@ const config = {
   brand: {
     primary: "#1D6B4A",
     logoText: "PROTEO",
-    logoSrc: null,
+    logoSrc: "/logo-proteo.png",
     radius: "1rem",
   },
 

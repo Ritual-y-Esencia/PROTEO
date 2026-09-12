@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowRight, Sparkles } from "lucide-react"
 import config from "@/config"
+import Logo from "@/components/Logo"
 
 export default function Hero() {
   const {
@@ -26,6 +27,9 @@ export default function Hero() {
       </div>
 
       <div className="mx-auto max-w-4xl px-4 pt-20 pb-10 text-center md:pt-28">
+        {config.brand.logoSrc && (
+          <Logo className="mx-auto mb-8 h-36 w-auto max-w-md md:h-48" />
+        )}
         {eyebrow && (
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-base-300 bg-base-100/70 px-3 py-1 text-xs font-medium text-base-content/70 backdrop-blur">
             <Sparkles className="size-3.5 text-primary" />
