@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="t">
+  <title id="t">Harina de larva BSF</title>
+  <rect width="640" height="400" fill="#E8F2EC"/>
+  <rect x="180" y="110" width="280" height="200" rx="16" fill="#1D6B4A"/>
+  <rect x="200" y="130" width="240" height="120" rx="8" fill="#F4E4C1"/>
+  <circle cx="260" cy="190" r="18" fill="#D4B483"/>
+  <circle cx="310" cy="175" r="14" fill="#C9A36A"/>
+  <circle cx="355" cy="200" r="16" fill="#D4B483"/>
+  <circle cx="290" cy="215" r="10" fill="#B8925A"/>
+  <text x="320" y="290" text-anchor="middle" fill="#E8F2EC" font-family="Georgia, serif" font-size="22">Harina</text>
+</svg>

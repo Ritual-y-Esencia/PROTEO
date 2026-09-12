@@ -6,11 +6,11 @@ function Icon({ name, className }) {
   return <Cmp className={className} />
 }
 
-export default function Problem() {
-  const { eyebrow, title, subtitle, items } = config.landing.problem
+export default function Impact() {
+  const { eyebrow, title, subtitle, items } = config.landing.impact
 
   return (
-    <section id="problema" className="scroll-mt-24 border-t border-base-200 bg-base-200/40 py-20 md:py-28">
+    <section id="impacto" className="scroll-mt-24 border-t border-base-200 bg-base-100 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-medium uppercase tracking-wider text-primary">{eyebrow}</p>
@@ -18,10 +18,10 @@ export default function Problem() {
           {subtitle && <p className="mt-4 text-base-content/70">{subtitle}</p>}
         </div>
 
-        <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-14 grid gap-6 md:grid-cols-3">
           {items.map((item) => (
             <li key={item.title} className="rounded-2xl border border-base-200 bg-base-100 p-6">
-              <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-error/10 text-error">
+              <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <Icon name={item.icon} className="size-5" />
               </div>
               <h3 className="text-lg font-semibold">{item.title}</h3>

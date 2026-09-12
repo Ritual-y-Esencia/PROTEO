@@ -31,7 +31,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <ul className="hidden items-center gap-6 md:flex">
+        <ul className="hidden items-center gap-4 lg:gap-6 md:flex">
           {config.landing.nav.map((item) => (
             <li key={item.href}>
               <Link
@@ -50,8 +50,8 @@ export default function Navbar() {
               Entrar
             </Link>
           )}
-          <Link href="#waitlist" className="btn btn-sm btn-accent">
-            {config.landing.hero.cta.label}
+          <Link href={config.landing.navCta.href} className="btn btn-sm btn-accent">
+            {config.landing.navCta.label}
           </Link>
         </div>
       </nav>

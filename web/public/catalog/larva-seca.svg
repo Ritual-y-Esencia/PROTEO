@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="t">
+  <title id="t">Larva seca BSF</title>
+  <rect width="640" height="400" fill="#F3EEE4"/>
+  <ellipse cx="320" cy="200" rx="210" ry="120" fill="#C4A574"/>
+  <ellipse cx="250" cy="190" rx="70" ry="28" fill="#8B6914"/>
+  <ellipse cx="340" cy="210" rx="80" ry="30" fill="#A67C3D"/>
+  <ellipse cx="390" cy="175" rx="55" ry="22" fill="#8B6914"/>
+  <text x="320" y="350" text-anchor="middle" fill="#1D6B4A" font-family="Georgia, serif" font-size="22">Larva seca</text>
+</svg>

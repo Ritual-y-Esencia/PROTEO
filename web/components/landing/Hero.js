@@ -1,19 +1,21 @@
 import Link from "next/link"
-import { ArrowRight, Sparkles, LayoutDashboard, MessageSquare, Bot } from "lucide-react"
+import { ArrowRight, Sparkles } from "lucide-react"
 import config from "@/config"
 
-const MOCK_NAV = [
-  { label: "Dashboard", icon: LayoutDashboard, active: true },
-  { label: "Chat", icon: MessageSquare },
-  { label: "Agente", icon: Bot },
-]
-
 export default function Hero() {
-  const { eyebrow, title, subtitle, cta, ctaSecondary } = config.landing.hero
+  const {
+    eyebrow,
+    title,
+    subtitle,
+    cta,
+    ctaSecondary,
+    audiencePrompt,
+    audienceChooser,
+    process = [],
+  } = config.landing.hero
 
   return (
     <section className="relative overflow-hidden">
-      {/* Fondo: cuadrícula + glows de marca */}
       <div
         className="pointer-events-none absolute inset-0 -z-10 [mask-image:radial-gradient(75%_60%_at_50%_0%,#000,transparent)]"
         aria-hidden
@@ -31,7 +33,9 @@ export default function Hero() {
           </div>
         )}
 
-        <h1 className="text-balance text-4xl font-bold tracking-tight md:text-6xl">{title}</h1>
+        <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+          {title}
+        </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-base-content/70 md:text-xl">
           {subtitle}
@@ -49,84 +53,41 @@ export default function Hero() {
           )}
         </div>
 
-        <p className="mt-4 text-sm text-base-content/50">Gratis para empezar · sin tarjeta</p>
+        {audienceChooser?.length > 0 && (
+          <div className="mx-auto mt-14 max-w-3xl">
+            {audiencePrompt && (
+              <p className="mb-4 text-sm font-medium text-base-content/60">{audiencePrompt}</p>
+            )}
+            <div className="grid gap-3 sm:grid-cols-2">
+              {audienceChooser.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className="rounded-2xl border-2 border-base-300 bg-base-100/80 px-5 py-5 text-left transition hover:border-primary hover:shadow-md"
+                >
+                  <span className="block text-base font-semibold">{item.label}</span>
+                  {item.hint && (
+                    <span className="mt-1 block text-sm text-base-content/60">{item.hint}</span>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
-      {/* Mockup de producto (navegador con la app dentro) */}
-      <div className="mx-auto max-w-5xl px-4 pb-20 md:pb-28">
-        <div className="mockup-browser border border-base-300 bg-base-100 shadow-2xl shadow-primary/10">
-          <div className="mockup-browser-toolbar">
-            <div className="input border border-base-300 text-base-content/50">
-              https://{config.app.domain}/dashboard
-            </div>
-          </div>
-
-          <div className="grid gap-4 border-t border-base-200 bg-base-200 p-4 sm:grid-cols-[168px_1fr] sm:p-6">
-            {/* Sidebar */}
-            <aside className="hidden rounded-xl bg-base-100 p-3 sm:block">
-              <div className="mb-3 flex items-center gap-2 px-1">
-                <span className="inline-flex size-6 items-center justify-center rounded-md bg-primary text-primary-content">
-                  <svg viewBox="0 0 24 24" fill="none" className="size-[62%]">
-                    <path
-                      d="M3.5 12 H7 L10.5 18 L15.5 6 H20.5"
-                      stroke="currentColor"
-                      strokeWidth="2.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                <span className="text-sm font-bold">{config.brand.logoText}</span>
-              </div>
-              <ul className="space-y-1">
-                {MOCK_NAV.map(({ label, icon: Icon, active }) => (
-                  <li
-                    key={label}
-                    className={
-                      "flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm " +
-                      (active
-                        ? "bg-primary/10 font-medium text-primary"
-                        : "text-base-content/60")
-                    }
-                  >
-                    <Icon className="size-4" />
-                    {label}
-                  </li>
-                ))}
-              </ul>
-            </aside>
-
-            {/* Contenido */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="h-6 w-40 rounded-md bg-base-300" />
-                <span className="btn btn-primary btn-sm pointer-events-none">Nuevo</span>
-              </div>
-
-              <div className="grid gap-3 sm:grid-cols-3">
-                {[0, 1, 2].map((i) => (
-                  <div key={i} className="rounded-xl border border-base-200 bg-base-100 p-4">
-                    <div className="mb-3 size-8 rounded-lg bg-primary/15" />
-                    <div className="mb-2 h-3 w-3/4 rounded bg-base-300" />
-                    <div className="h-3 w-1/2 rounded bg-base-200" />
-                  </div>
-                ))}
-              </div>
-
-              <div className="rounded-xl border border-base-200 bg-base-100 p-4">
-                <div className="flex items-center gap-2 text-xs font-medium text-base-content/50">
-                  <Sparkles className="size-3.5 text-accent" />
-                  Asistente AI
-                </div>
-                <div className="mt-3 space-y-2">
-                  <div className="h-3 w-full rounded bg-base-200" />
-                  <div className="h-3 w-5/6 rounded bg-base-200" />
-                  <div className="h-3 w-2/3 rounded bg-base-200" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="mx-auto max-w-4xl px-4 pb-20 md:pb-28">
+        <ol className="grid gap-3 sm:grid-cols-3">
+          {process.map((item) => (
+            <li
+              key={item.step}
+              className="rounded-2xl border border-base-200 bg-base-100/90 px-5 py-6 text-center shadow-sm"
+            >
+              <p className="text-xs font-semibold tracking-widest text-primary">{item.step}</p>
+              <p className="mt-2 font-medium">{item.label}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )

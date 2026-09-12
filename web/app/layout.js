@@ -1,7 +1,9 @@
 import "./globals.css"
+import { Suspense } from "react"
 import { Space_Grotesk, DM_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import config from "@/config"
+import WhatsAppButton from "@/components/layout/WhatsAppButton"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -58,6 +60,9 @@ export default function RootLayout({ children }) {
           }}
         />
         {children}
+        <Suspense fallback={null}>
+          <WhatsAppButton />
+        </Suspense>
         <Analytics />
       </body>
     </html>
